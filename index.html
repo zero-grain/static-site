@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公文系統說明網站</title>
+    <!-- Tailwind CDN：快速上線；若要企業級流程，可改本地編譯 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 你的客製樣式（分離檔案） -->
+    <link rel="stylesheet" href="./assets/css/styles.css?v=1.0" />
+    <meta name="description" content="一個使用 Tailwind CSS 製作的靜態網站版型：左側邊欄 + 右側主內容。">
+</head>
+<body class="min-h-dvh bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
+
+  <!-- 整體容器：左側固定寬，右側自適應 -->
+  <div class="flex min-h-dvh">
+    <!-- 側邊欄 -->
+    <aside id="sidebar"
+      class="fixed inset-y-0 left-0 w-72 shrink-0
+         h-screen overflow-y-auto              
+         border-r border-gray-200 bg-white/80 backdrop-blur
+         dark:bg-gray-800/60 dark:border-gray-700
+         -translate-x-full lg:translate-x-0     
+         transition-transform duration-200 z-40">>
+
+      <!-- 側欄頂部 -->
+      <div class="flex items-center justify-between gap-3 px-4 py-4 border-b border-gray-200 dark:border-gray-700">
+        <div class="flex items-center gap-3">
+          <!--（可換成 <img src="./assets/img/logo.svg" class="h-8 w-8">）-->
+          <div class="h-9 w-9 rounded-xl bg-gradient-to-br ">
+            <img src="./assets/img/OD_logo.png" class="h-8 w-8">
+          </div>
+          <div>
+            <h1 class="text-lg font-semibold">公文系統說明網站</h1>
+          </div>
+        </div>
+
+        <!-- 行動裝置關閉按鈕（LG 以下可見） -->
+        <button id="closeSidebarBtn" class="lg:hidden rounded-lg border px-2 py-1 text-sm
+                border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+          關閉
+        </button>
+      </div>
+
+      <!-- 側欄內容：導覽 -->
+      <nav class="px-3 py-4 space-y-2 ">
+        <a href="index.html" class="nav-link group flex items-center gap-3 rounded-lg px-3 py-2
+           hover:bg-rose-50 dark:hover:bg-gray-700">
+          <span class="i-dot h-1.5 w-1.5 rounded-full bg-gray-400 group-[.active]:bg-rose-500"></span>
+          <span class="font-medium group-[.active]:text-rose-600">介紹</span>
+        </a>
+        <a href="Receipt-Instructions.html" class="nav-link group flex items-center gap-3 rounded-lg px-3 py-2
+           hover:bg-rose-50 dark:hover:bg-gray-700">
+          <span class="i-dot h-1.5 w-1.5 rounded-full bg-gray-400 group-[.active]:bg-rose-500"></span>
+          <span class="font-medium group-[.active]:text-rose-600">E-mail認證、登入說明</span>
+        </a>
+        <a href="Founding.html" class="nav-link group flex items-center gap-3 rounded-lg px-3 py-2
+           hover:bg-rose-50 dark:hover:bg-gray-700">
+          <span class="i-dot h-1.5 w-1.5 rounded-full bg-gray-400 group-[.active]:bg-rose-500"></span>
+          <span class="font-medium group-[.active]:text-rose-600">創簽稿作業</span>
+        </a>
+        <a href="Archive.html" class="nav-link group flex items-center gap-3 rounded-lg px-3 py-2
+           hover:bg-rose-50 dark:hover:bg-gray-700">
+          <span class="i-dot h-1.5 w-1.5 rounded-full bg-gray-400 group-[.active]:bg-rose-500"></span>
+          <span class="font-medium group-[.active]:text-rose-600">歸檔簽核作業</span>
+        </a>
+        <a href="Branch.html" class="nav-link group flex items-center gap-3 rounded-lg px-3 py-2
+           hover:bg-rose-50 dark:hover:bg-gray-700">
+          <span class="i-dot h-1.5 w-1.5 rounded-full bg-gray-400 group-[.active]:bg-rose-500"></span>
+          <span class="font-medium group-[.active]:text-rose-600">分會作業</span>
+        </a>
+      </nav>
+
+      <!-- 側欄底部：操作 -->
+      <div class="mt-auto px-4 py-4 border-t border-gray-200 dark:border-gray-700">
+        <div class="flex items-center justify-between">
+          <button id="toggleThemeBtn"
+            class="rounded-lg border px-3 py-1.5 text-sm border-gray-300 dark:border-gray-600
+                   hover:bg-gray-100 dark:hover:bg-gray-700">
+            製作者:Teddy_Chou
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 主內容（含頂部工具列）-->
+    <div class="flex-1 lg:ml-0 ml-0 lg:pl-0 pl-0 lg:pt-0 pt-14">
+      <!-- 行動裝置上方工具列（僅小螢幕顯示） -->
+      <header class="lg:hidden fixed top-0 inset-x-0 z-30
+                     bg-white/80 backdrop-blur border-b border-gray-200
+                     dark:bg-gray-800/60 dark:border-gray-700">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+          <button id="openSidebarBtn"
+                  class="rounded-lg border px-3 py-1.5 text-sm border-gray-300 dark:border-gray-600
+                         hover:bg-gray-100 dark:hover:bg-gray-700">
+            選單
+          </button>
+          <div class="text-sm text-gray-600 dark:text-gray-300">公文系統說明網站</div>
+          <span class="w-16"></span>
+        </div>
+      </header>
+
+      <!-- 內容容器 -->
+      <main class="max-w-6xl mx-auto px-6 py-8">
+        <!-- Intro -->
+        <section id="section-intro" class="scroll-mt-24">
+          <h2 class="text-2xl font-semibold mb-3">介紹</h2>
+          <p class="text-gray-600 dark:text-gray-300">
+            公文系統是一套整合文件撰寫、簽核與歸檔的數位平台，能取代傳統紙本作業，提升行政效率。透過線上簽核、權限控管與版本追蹤，確保流程透明並降低錯誤風險。
+            嚴謹的資安機制與合規標準，公文系統已成為推動無紙化、智慧化行政的關鍵工具。
+          </p>
+        </section>
+
+        <!-- Cards -->
+        <section id="section-cards" class="mt-10 scroll-mt-24">
+          <h2 class="text-2xl font-semibold mb-4">影片介紹</h2>
+          <div class="grid gap-4 md:grid-cols-1 lg:grid-cols-1">
+            <!-- Card 1 -->
+            <article class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm
+                             dark:bg-gray-800 dark:border-gray-700">
+              <iframe width="1064" height="800" src="https://www.youtube.com/embed/tHXdaDl2aPs?si=OmhMPf1mgRbM3OCd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </article>
+        </section>
+
+        <!-- Form -->
+        <section id="section-form" class="mt-12 scroll-mt-24">
+         
+        </section>
+
+        <!-- Footer -->
+        <section id="section-footer" class="mt-14 scroll-mt-24">
+          <footer class="border-t border-gray-200 dark:border-gray-700 pt-6 pb-10 text-sm text-gray-500 dark:text-gray-400">
+            © <span id="year"></span> 公文系統說明網站
+          </footer>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- 你的腳本（分離檔案） -->
+  <script src="./assets/js/main.js?v=1.0"></script>
+</body>
+</html>

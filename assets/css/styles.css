@@ -1,0 +1,33 @@
+/* 全域微調：字型與捲軸 */
+:root {
+  --brand: #f43f5e; /* 玫瑰色 */
+}
+
+html {
+  font-feature-settings: "palt";
+}
+
+/* 自訂導覽 active 樣式（JS 會加上 .active 到 .nav-link） */
+.nav-link.active {
+  background: rgba(244,63,94,0.08);
+  outline: 2px solid rgba(244,63,94,0.25);
+}
+
+/* 深色模式下微調 */
+.dark .nav-link.active {
+  background: rgba(244,63,94,0.12);
+}
+
+/* 美化滾動條（僅桌面 Chrome/Edge）*/
+@media (pointer: fine) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #c7c7c7 transparent;
+  }
+  *::-webkit-scrollbar { height: 10px; width: 10px; }
+  *::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background: #c7c7c7;
+  }
+  *::-webkit-scrollbar-thumb:hover { background: #b1b1b1; }
+}
