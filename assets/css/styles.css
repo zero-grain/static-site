@@ -1,33 +1,160 @@
-/* 全域微調：字型與捲軸 */
 :root {
-  --brand: #f43f5e; /* 玫瑰色 */
+  --brand: #f43f5e;
+  --surface-dark: rgba(10, 18, 34, 0.78);
+  --surface-dark-strong: rgba(15, 23, 42, 0.92);
+  --border-dark: rgba(148, 163, 184, 0.2);
+  --shadow-dark: 0 18px 50px rgba(2, 6, 23, 0.38);
 }
 
 html {
+  color-scheme: light;
   font-feature-settings: "palt";
 }
 
-/* 自訂導覽 active 樣式（JS 會加上 .active 到 .nav-link） */
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background-image:
+    radial-gradient(circle at top left, rgba(244, 63, 94, 0.08), transparent 32%),
+    radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 1));
+  background-attachment: fixed;
+  transition: background-color 220ms ease, color 220ms ease;
+}
+
+html.dark body {
+  background-image:
+    radial-gradient(circle at top left, rgba(244, 63, 94, 0.18), transparent 28%),
+    radial-gradient(circle at top right, rgba(56, 189, 248, 0.18), transparent 24%),
+    linear-gradient(180deg, rgba(2, 6, 23, 0.98), rgba(10, 15, 29, 1));
+}
+
+.content-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.content-image[loading="lazy"] {
+  content-visibility: auto;
+}
+
+.nav-link {
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
 .nav-link.active {
-  background: rgba(244,63,94,0.08);
-  outline: 2px solid rgba(244,63,94,0.25);
+  background: rgba(244, 63, 94, 0.08);
+  outline: 2px solid rgba(244, 63, 94, 0.25);
 }
 
-/* 深色模式下微調 */
 .dark .nav-link.active {
-  background: rgba(244,63,94,0.12);
+  background: rgba(244, 63, 94, 0.12);
 }
 
-/* 美化滾動條（僅桌面 Chrome/Edge）*/
+.dark .nav-link:hover {
+  background: rgba(30, 41, 59, 0.9);
+}
+
+#sidebar,
+header,
+article,
+#imgModal img,
+#toggleThemeBtn {
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease,
+    box-shadow 220ms ease,
+    transform 180ms ease;
+}
+
+html.dark #sidebar {
+  background: var(--surface-dark);
+  border-color: var(--border-dark);
+  box-shadow: var(--shadow-dark);
+}
+
+html.dark header {
+  background: rgba(9, 15, 28, 0.78);
+  border-color: var(--border-dark);
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.22);
+}
+
+html.dark article {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.82));
+  border-color: rgba(148, 163, 184, 0.18);
+  box-shadow: 0 18px 35px rgba(2, 6, 23, 0.22);
+}
+
+html.dark .content-image {
+  border-color: rgba(148, 163, 184, 0.14);
+  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.3);
+}
+
+#toggleThemeBtn {
+  min-width: 11rem;
+  border-radius: 9999px;
+  border-color: rgba(244, 63, 94, 0.22);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 241, 242, 0.94));
+  box-shadow: 0 10px 24px rgba(244, 63, 94, 0.12);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+#toggleThemeBtn:hover {
+  transform: translateY(-1px);
+}
+
+html.dark #toggleThemeBtn {
+  border-color: rgba(125, 211, 252, 0.18);
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
+  box-shadow: 0 12px 28px rgba(2, 6, 23, 0.34);
+  color: #e2e8f0;
+}
+
+html.dark footer {
+  color: #94a3b8;
+}
+
+.footer-link {
+  border: 1px solid rgba(244, 63, 94, 0.2);
+  background: rgba(244, 63, 94, 0.08);
+  color: #be123c;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.footer-link:hover {
+  transform: translateY(-1px);
+  background: rgba(244, 63, 94, 0.14);
+}
+
+html.dark .footer-link {
+  border-color: rgba(125, 211, 252, 0.2);
+  background: rgba(30, 41, 59, 0.95);
+  color: #e2e8f0;
+}
+
 @media (pointer: fine) {
   * {
     scrollbar-width: thin;
     scrollbar-color: #c7c7c7 transparent;
   }
-  *::-webkit-scrollbar { height: 10px; width: 10px; }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
   *::-webkit-scrollbar-thumb {
     border-radius: 8px;
     background: #c7c7c7;
   }
-  *::-webkit-scrollbar-thumb:hover { background: #b1b1b1; }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: #b1b1b1;
+  }
 }
