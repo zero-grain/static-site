@@ -1,141 +1,195 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="zh-Hant" class="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>公文系統說明網站</title>
-    <!-- Tailwind CDN：快速上線；若要企業級流程，可改本地編譯 -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 你的客製樣式（分離檔案） -->
-    <link rel="stylesheet" href="./assets/css/styles.css?v=1.0" />
-    <meta name="description" content="一個使用 Tailwind CSS 製作的靜態網站版型：左側邊欄 + 右側主內容。">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>&#x516C;&#x6587;&#x7CFB;&#x7D71;&#x8AAA;&#x660E;&#x7DB2;&#x7AD9;</title>
+  <meta name="description" content="&#x516C;&#x6587;&#x7CFB;&#x7D71;&#x8AAA;&#x660E;&#x7DB2;&#x7AD9;&#xFF0C;&#x6574;&#x7406;&#x6536;&#x6587;&#x3001;&#x5275;&#x7A3F;&#x3001;&#x5206;&#x6587;&#x8207;&#x6B78;&#x6A94;&#x6559;&#x5B78;&#x3002;" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="./assets/css/styles.css?v=1.2" />
 </head>
-<body class="min-h-dvh bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
+<body class="min-h-dvh bg-slate-50 text-slate-900">
+  <div id="sidebarOverlay" class="fixed inset-0 z-30 hidden bg-slate-950/40 lg:hidden"></div>
 
-  <!-- 整體容器：左側固定寬，右側自適應 -->
-  <div class="flex min-h-dvh">
-    <!-- 側邊欄 -->
-    <aside id="sidebar"
-      class="fixed inset-y-0 left-0 w-72 shrink-0
-         h-screen overflow-y-auto              
-         border-r border-gray-200 bg-white/80 backdrop-blur
-         dark:bg-gray-800/60 dark:border-gray-700
-         -translate-x-full lg:translate-x-0     
-         transition-transform duration-200 z-40">
-
-      <!-- 側欄頂部 -->
-      <div class="flex items-center justify-between gap-3 px-4 py-4 border-b border-gray-200 dark:border-gray-700">
-        <div class="flex items-center gap-3">
-          <!--（可換成 <img src="./assets/img/logo.svg" class="h-8 w-8">）-->
-          <div class="h-9 w-9 rounded-xl bg-gradient-to-br ">
-            <img src="./assets/img/OD_logo.png" class="h-8 w-8">
+  <div class="min-h-dvh lg:flex">
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 flex w-72 -translate-x-full flex-col border-r border-slate-200 bg-white shadow-xl transition-transform duration-200 lg:sticky lg:top-0 lg:h-dvh lg:translate-x-0 lg:shadow-none">
+      <div class="flex items-center justify-between gap-3 border-b border-slate-200 px-4 py-4">
+        <a href="index.html" class="flex min-w-0 items-center gap-3">
+          <img src="./assets/img/OD_logo.png" alt="OD logo" class="h-10 w-10 rounded-lg object-contain" />
+          <div class="min-w-0">
+            <p class="truncate text-base font-semibold">&#x516C;&#x6587;&#x7CFB;&#x7D71;&#x8AAA;&#x660E;&#x7DB2;&#x7AD9;</p>
+            <p class="text-xs text-slate-500">&#x64CD;&#x4F5C;&#x6559;&#x5B78;&#x8207;&#x6D41;&#x7A0B;&#x6307;&#x5357;</p>
           </div>
-          <div>
-            <h1 class="text-lg font-semibold">公文系統說明網站</h1>
-          </div>
-        </div>
-
-        <!-- 行動裝置關閉按鈕（LG 以下可見） -->
-        <button id="closeSidebarBtn" class="lg:hidden rounded-lg border px-2 py-1 text-sm
-                border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-          關閉
+        </a>
+        <button id="closeSidebarBtn" class="inline-flex h-9 w-9 items-center justify-center rounded-md border border-slate-200 text-slate-600 hover:bg-slate-100 lg:hidden" type="button" aria-label="&#x95DC;&#x9589;&#x9078;&#x55AE;">
+          <i data-lucide="x" class="h-4 w-4"></i>
         </button>
       </div>
 
-      <!-- 側欄內容：導覽 -->
-      <nav class="px-3 py-4 space-y-2 ">
-        <a href="index.html" class="nav-link group flex items-center gap-3 rounded-lg px-3 py-2
-           hover:bg-rose-50 dark:hover:bg-gray-700">
-          <span class="i-dot h-1.5 w-1.5 rounded-full bg-gray-400 group-[.active]:bg-rose-500"></span>
-          <span class="font-medium group-[.active]:text-rose-600">介紹</span>
+      <nav class="flex-1 space-y-1 overflow-y-auto px-3 py-4" aria-label="Main navigation">
+        <a href="index.html" class="nav-link active flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium">
+          <i data-lucide="layout-dashboard" class="h-4 w-4"></i>
+          <span>&#x9996;&#x9801;&#x7E3D;&#x89BD;</span>
         </a>
-        <a href="Receipt-Instructions.html" class="nav-link group flex items-center gap-3 rounded-lg px-3 py-2
-           hover:bg-rose-50 dark:hover:bg-gray-700">
-          <span class="i-dot h-1.5 w-1.5 rounded-full bg-gray-400 group-[.active]:bg-rose-500"></span>
-          <span class="font-medium group-[.active]:text-rose-600">E-mail認證、登入說明</span>
+        <a href="Receipt-Instructions.html" class="nav-link flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium">
+          <i data-lucide="inbox" class="h-4 w-4"></i>
+          <span>E-mail &#x6536;&#x6587;&#x8AAA;&#x660E;</span>
         </a>
-        <a href="Founding.html" class="nav-link group flex items-center gap-3 rounded-lg px-3 py-2
-           hover:bg-rose-50 dark:hover:bg-gray-700">
-          <span class="i-dot h-1.5 w-1.5 rounded-full bg-gray-400 group-[.active]:bg-rose-500"></span>
-          <span class="font-medium group-[.active]:text-rose-600">創簽稿作業</span>
+        <a href="Founding.html" class="nav-link flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium">
+          <i data-lucide="file-plus-2" class="h-4 w-4"></i>
+          <span>&#x5275;&#x7A3F;&#x6D41;&#x7A0B;</span>
         </a>
-        <a href="Archive.html" class="nav-link group flex items-center gap-3 rounded-lg px-3 py-2
-           hover:bg-rose-50 dark:hover:bg-gray-700">
-          <span class="i-dot h-1.5 w-1.5 rounded-full bg-gray-400 group-[.active]:bg-rose-500"></span>
-          <span class="font-medium group-[.active]:text-rose-600">歸檔簽核作業</span>
+        <a href="Archive.html" class="nav-link flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium">
+          <i data-lucide="archive" class="h-4 w-4"></i>
+          <span>&#x6B78;&#x6A94;&#x4F5C;&#x696D;</span>
         </a>
-        <a href="Branch.html" class="nav-link group flex items-center gap-3 rounded-lg px-3 py-2
-           hover:bg-rose-50 dark:hover:bg-gray-700">
-          <span class="i-dot h-1.5 w-1.5 rounded-full bg-gray-400 group-[.active]:bg-rose-500"></span>
-          <span class="font-medium group-[.active]:text-rose-600">分會作業</span>
+        <a href="Branch.html" class="nav-link flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium">
+          <i data-lucide="git-branch" class="h-4 w-4"></i>
+          <span>&#x5206;&#x6587;&#x4F5C;&#x696D;</span>
         </a>
       </nav>
 
-      <!-- 側欄底部：操作 -->
-      <div class="mt-auto px-4 py-4 border-t border-gray-200 dark:border-gray-700">
-        <div class="mt-4 space-y-1 text-xs leading-5 text-gray-500 dark:text-gray-400">
-          <p>&#35069;&#20316;&#32773;: Teddy_Chou</p>
-          <p>Copyright &copy; 2025 slsc.org.tw All rights reserved.</p>
-          <a href="Privacy-Policy.html" class="footer-link inline-flex items-center rounded-full px-3 py-1">&#38577;&#31169;&#27402;&#25919;&#31574;</a>
-        </div>
+      <div class="border-t border-slate-200 px-4 py-4 text-xs leading-5 text-slate-500">
+        <p>&#x88FD;&#x4F5C;&#x8005;&#xFF1A;Teddy_Chou</p>
+        <p>Copyright &copy; 2025 slsc.org.tw</p>
+        <a href="Privacy-Policy.html" class="footer-link mt-3 inline-flex items-center gap-2 rounded-md px-3 py-1.5">
+          <i data-lucide="shield-check" class="h-3.5 w-3.5"></i>
+          &#x96B1;&#x79C1;&#x6B0A;&#x653F;&#x7B56;
+        </a>
       </div>
     </aside>
 
-    <!-- 主內容（含頂部工具列）-->
-    <div class="flex-1 lg:ml-0 ml-0 lg:pl-0 pl-0 lg:pt-0 pt-14">
-      <!-- 行動裝置上方工具列（僅小螢幕顯示） -->
-      <header class="lg:hidden fixed top-0 inset-x-0 z-30
-                     bg-white/80 backdrop-blur border-b border-gray-200
-                     dark:bg-gray-800/60 dark:border-gray-700">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-          <button id="openSidebarBtn"
-                  class="rounded-lg border px-3 py-1.5 text-sm border-gray-300 dark:border-gray-600
-                         hover:bg-gray-100 dark:hover:bg-gray-700">
-            選單
+    <div class="min-w-0 flex-1">
+      <header class="sticky top-0 z-20 border-b border-slate-200 bg-white/90 backdrop-blur">
+        <div class="flex h-14 items-center justify-between gap-3 px-4 lg:px-8">
+          <button id="openSidebarBtn" class="inline-flex h-9 w-9 items-center justify-center rounded-md border border-slate-200 text-slate-700 hover:bg-slate-100 lg:hidden" type="button" aria-label="&#x958B;&#x555F;&#x9078;&#x55AE;">
+            <i data-lucide="menu" class="h-4 w-4"></i>
           </button>
-          <div class="text-sm text-gray-600 dark:text-gray-300">公文系統說明網站</div>
-          <span class="w-16"></span>
+          <p class="min-w-0 truncate text-sm font-semibold lg:text-base">&#x516C;&#x6587;&#x7CFB;&#x7D71;&#x8AAA;&#x660E;&#x7DB2;&#x7AD9;</p>
+          <button id="toggleThemeBtn" class="inline-flex h-9 items-center gap-2 rounded-md border border-slate-200 px-3 text-sm text-slate-700 hover:bg-slate-100" type="button">
+            <i data-lucide="moon" class="h-4 w-4"></i>
+            <span>&#x6DF1;&#x8272;</span>
+          </button>
         </div>
       </header>
 
-      <!-- 內容容器 -->
-      <main class="max-w-6xl mx-auto px-6 py-8">
-        <!-- Intro -->
-        <section id="section-intro" class="scroll-mt-24">
-          <h2 class="text-2xl font-semibold mb-3">介紹</h2>
-          <p class="text-gray-600 dark:text-gray-300">
-            公文系統是一套整合文件撰寫、簽核與歸檔的數位平台，能取代傳統紙本作業，提升行政效率。透過線上簽核、權限控管與版本追蹤，確保流程透明並降低錯誤風險。
-            嚴謹的資安機制與合規標準，公文系統已成為推動無紙化、智慧化行政的關鍵工具。
-          </p>
+      <main class="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
+        <section class="hero-panel grid gap-8 rounded-lg border border-slate-200 p-6 lg:grid-cols-[1fr_340px] lg:items-start lg:p-8">
+          <div class="space-y-6">
+            <div class="space-y-4">
+              <p class="kicker">Document Workflow Guide</p>
+              <h1 class="max-w-3xl text-3xl font-semibold tracking-normal text-slate-950 sm:text-4xl">&#x516C;&#x6587;&#x7CFB;&#x7D71;&#x64CD;&#x4F5C;&#x8AAA;&#x660E;&#x8207;&#x5E38;&#x7528;&#x6D41;&#x7A0B;</h1>
+              <p class="max-w-3xl text-base leading-8 text-slate-600">
+                &#x6574;&#x7406;&#x767B;&#x5165;&#x3001;&#x6536;&#x6587;&#x3001;&#x5275;&#x7A3F;&#x3001;&#x5206;&#x6587;&#x8207;&#x6B78;&#x6A94;&#x7684;&#x5E38;&#x7528;&#x6559;&#x5B78;&#xFF0C;&#x8B93;&#x540C;&#x4EC1;&#x80FD;&#x4F9D;&#x60C5;&#x5883;&#x5FEB;&#x901F;&#x627E;&#x5230;&#x6B65;&#x9A5F;&#xFF0C;&#x6E1B;&#x5C11;&#x64CD;&#x4F5C;&#x4E2D;&#x65B7;&#x3002;
+              </p>
+            </div>
+
+            <div class="grid gap-3 sm:grid-cols-3">
+              <a href="Receipt-Instructions.html" class="quick-action">
+                <i data-lucide="mail-check" class="h-5 w-5"></i>
+                <span>E-mail &#x6536;&#x6587;</span>
+              </a>
+              <a href="Founding.html" class="quick-action">
+                <i data-lucide="pen-line" class="h-5 w-5"></i>
+                <span>&#x5275;&#x7A3F;&#x6D41;&#x7A0B;</span>
+              </a>
+              <a href="Archive.html" class="quick-action">
+                <i data-lucide="folder-check" class="h-5 w-5"></i>
+                <span>&#x6B78;&#x6A94;&#x4F5C;&#x696D;</span>
+              </a>
+            </div>
+          </div>
+
+          <aside class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <div class="mb-4 flex items-center gap-3">
+              <div class="flex h-10 w-10 items-center justify-center rounded-md bg-orange-50 text-orange-700">
+                <i data-lucide="list-checks" class="h-5 w-5"></i>
+              </div>
+              <div>
+                <h2 class="text-base font-semibold">&#x5EFA;&#x8B70;&#x95B1;&#x8B80;&#x9806;&#x5E8F;</h2>
+                <p class="text-sm text-slate-500">&#x65B0;&#x9032;&#x540C;&#x4EC1;&#x53EF;&#x4F9D;&#x5E8F;&#x5B8C;&#x6210;</p>
+              </div>
+            </div>
+            <ol class="space-y-3 text-sm text-slate-700">
+              <li class="flex gap-3"><span class="step-number">1</span><span>&#x78BA;&#x8A8D;&#x7CFB;&#x7D71;&#x5165;&#x53E3;&#x8207;&#x5E33;&#x865F;&#x767B;&#x5165;&#x3002;</span></li>
+              <li class="flex gap-3"><span class="step-number">2</span><span>&#x719F;&#x6089; E-mail &#x6536;&#x6587;&#x8207;&#x9644;&#x4EF6;&#x6AA2;&#x8996;&#x3002;</span></li>
+              <li class="flex gap-3"><span class="step-number">3</span><span>&#x7DF4;&#x7FD2;&#x5275;&#x7A3F;&#x3001;&#x5206;&#x6587;&#x8207;&#x6B78;&#x6A94;&#x6D41;&#x7A0B;&#x3002;</span></li>
+            </ol>
+          </aside>
         </section>
 
-        <!-- Cards -->
-        <section id="section-cards" class="mt-10 scroll-mt-24">
-          <h2 class="text-2xl font-semibold mb-4">影片介紹</h2>
-          <div class="grid gap-4 md:grid-cols-1 lg:grid-cols-1">
-            <!-- Card 1 -->
-            <article class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm
-                             dark:bg-gray-800 dark:border-gray-700">
-              <iframe width="1064" height="800" src="https://www.youtube.com/embed/tHXdaDl2aPs?si=OmhMPf1mgRbM3OCd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </article>
+        <section class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4" aria-label="Features">
+          <article class="feature-card">
+            <i data-lucide="log-in" class="feature-icon text-orange-700"></i>
+            <h2>&#x767B;&#x5165;&#x8207;&#x57FA;&#x672C;&#x64CD;&#x4F5C;</h2>
+            <p>&#x4E86;&#x89E3;&#x7CFB;&#x7D71;&#x5165;&#x53E3;&#x3001;&#x5E33;&#x865F;&#x767B;&#x5165;&#x3001;&#x4ECB;&#x9762;&#x5340;&#x584A;&#x8207;&#x5E38;&#x898B;&#x6309;&#x9215;&#x4F4D;&#x7F6E;&#x3002;</p>
+          </article>
+          <article class="feature-card">
+            <i data-lucide="inbox" class="feature-icon text-red-700"></i>
+            <h2>&#x6536;&#x6587;&#x8655;&#x7406;</h2>
+            <p>&#x8AAA;&#x660E; E-mail &#x6536;&#x6587;&#x3001;&#x9644;&#x4EF6;&#x78BA;&#x8A8D;&#x3001;&#x767B;&#x9304;&#x8CC7;&#x6599;&#x8207;&#x5F8C;&#x7E8C;&#x8655;&#x7406;&#x65B9;&#x5411;&#x3002;</p>
+          </article>
+          <article class="feature-card">
+            <i data-lucide="file-signature" class="feature-icon text-amber-700"></i>
+            <h2>&#x5275;&#x7A3F;&#x6D41;&#x7A0B;</h2>
+            <p>&#x5F9E;&#x65B0;&#x589E;&#x7A3F;&#x4EF6;&#x3001;&#x586B;&#x5BEB;&#x6B04;&#x4F4D;&#x3001;&#x5957;&#x7528;&#x7BC4;&#x672C;&#x5230;&#x9001;&#x51FA;&#x7C3D;&#x6838;&#xFF0C;&#x4E00;&#x6B21;&#x638C;&#x63E1;&#x3002;</p>
+          </article>
+          <article class="feature-card">
+            <i data-lucide="send" class="feature-icon text-yellow-800"></i>
+            <h2>&#x5206;&#x6587;&#x8207;&#x6B78;&#x6A94;</h2>
+            <p>&#x5354;&#x52A9;&#x5B8C;&#x6210;&#x5206;&#x6587;&#x3001;&#x627F;&#x8FA6;&#x79FB;&#x8F49;&#x3001;&#x7D50;&#x6848;&#x6B78;&#x6A94;&#x8207;&#x65E5;&#x5F8C;&#x67E5;&#x8A62;&#x3002;</p>
+          </article>
         </section>
 
-        <!-- Form -->
-        <section id="section-form" class="mt-12 scroll-mt-24">
-         
+        <section class="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
+          <article class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+            <div class="mb-5 flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h2 class="text-xl font-semibold">&#x6559;&#x5B78;&#x5F71;&#x7247;</h2>
+                <p class="mt-1 text-sm text-slate-500">&#x53EF;&#x642D;&#x914D;&#x5404;&#x9801;&#x5716;&#x6587;&#x6B65;&#x9A5F;&#x4E00;&#x8D77;&#x89C0;&#x770B;&#x3002;</p>
+              </div>
+              <a href="https://www.youtube.com/embed/tHXdaDl2aPs?si=OmhMPf1mgRbM3OCd" class="inline-flex items-center gap-2 rounded-md border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">
+                <i data-lucide="external-link" class="h-4 w-4"></i>
+                &#x958B;&#x555F;&#x5F71;&#x7247;
+              </a>
+            </div>
+            <div class="aspect-video overflow-hidden rounded-md border border-slate-200 bg-slate-100">
+              <iframe class="h-full w-full" src="https://www.youtube.com/embed/tHXdaDl2aPs?si=OmhMPf1mgRbM3OCd" title="Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </article>
+
+          <aside class="space-y-4">
+            <div class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+              <h2 class="text-base font-semibold">&#x64CD;&#x4F5C;&#x524D;&#x6E96;&#x5099;</h2>
+              <ul class="mt-4 space-y-3 text-sm leading-6 text-slate-600">
+                <li class="flex gap-2"><i data-lucide="check" class="mt-1 h-4 w-4 shrink-0 text-orange-700"></i><span>&#x78BA;&#x8A8D;&#x700F;&#x89BD;&#x5668;&#x53EF;&#x6B63;&#x5E38;&#x958B;&#x555F;&#x7CFB;&#x7D71;&#x3002;</span></li>
+                <li class="flex gap-2"><i data-lucide="check" class="mt-1 h-4 w-4 shrink-0 text-orange-700"></i><span>&#x5099;&#x59A5;&#x5E33;&#x865F;&#x3001;&#x5BC6;&#x78BC;&#x8207;&#x5FC5;&#x8981;&#x9644;&#x4EF6;&#x3002;</span></li>
+                <li class="flex gap-2"><i data-lucide="check" class="mt-1 h-4 w-4 shrink-0 text-orange-700"></i><span>&#x4F9D;&#x696D;&#x52D9;&#x60C5;&#x5883;&#x9078;&#x64C7;&#x6536;&#x6587;&#x3001;&#x5275;&#x7A3F;&#x6216;&#x5206;&#x6587;&#x3002;</span></li>
+              </ul>
+            </div>
+
+            <div class="notice-card rounded-lg border border-slate-200 p-5 shadow-sm">
+              <h2 class="text-base font-semibold">&#x5E38;&#x898B;&#x63D0;&#x9192;</h2>
+              <p class="mt-3 text-sm leading-6">&#x82E5;&#x756B;&#x9762;&#x8207;&#x6559;&#x5B78;&#x4E0D;&#x4E00;&#x81F4;&#xFF0C;&#x53EF;&#x80FD;&#x662F;&#x6B0A;&#x9650;&#x6216;&#x7CFB;&#x7D71;&#x7248;&#x672C;&#x4E0D;&#x540C;&#xFF0C;&#x8ACB;&#x6D3D;&#x7CFB;&#x7D71;&#x7BA1;&#x7406;&#x7A97;&#x53E3;&#x3002;</p>
+            </div>
+          </aside>
         </section>
 
-        <!-- Footer -->
-        <section id="section-footer" class="mt-14 scroll-mt-24">
-          <footer class="border-t border-gray-200 dark:border-gray-700 pt-6 pb-10 text-sm text-gray-500 dark:text-gray-400">
-            © <span id="year"></span> 公文系統說明網站
-          </footer>
-        </section>
+        <footer class="mt-12 border-t border-slate-200 py-6 text-sm text-slate-500">
+          &copy; <span id="year"></span> &#x516C;&#x6587;&#x7CFB;&#x7D71;&#x8AAA;&#x660E;&#x7DB2;&#x7AD9;
+        </footer>
       </main>
     </div>
   </div>
 
-  <!-- 你的腳本（分離檔案） -->
-  <script src="./assets/js/main.js?v=1.0"></script>
+  <div id="imgModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 p-4">
+    <button class="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-md bg-white text-slate-800" type="button" onclick="closeModal()" aria-label="Close image preview">
+      <i data-lucide="x" class="h-5 w-5"></i>
+    </button>
+    <img id="modalImg" alt="Image preview" class="max-h-full max-w-full rounded-md bg-white object-contain" />
+  </div>
+
+  <script src="./assets/js/main.js?v=1.2"></script>
 </body>
 </html>
